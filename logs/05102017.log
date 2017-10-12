@@ -1,0 +1,6 @@
+05-10-2017 00:49:56.0 [INFO] Connector running on Port 8888
+05-10-2017 00:49:56.9 [NOTICE] dxxco19i2t6duudkjecmxrnxu0b6k8d subscribed on channel /NewAccReq
+05-10-2017 00:49:56.9 [NOTICE] dxxco19i2t6duudkjecmxrnxu0b6k8d subscribed on channel /UpdateAccReq
+05-10-2017 00:49:56.9 [NOTICE] dxxco19i2t6duudkjecmxrnxu0b6k8d subscribed on channel /ListAccReq
+05-10-2017 00:49:56.9 [NOTICE] dxxco19i2t6duudkjecmxrnxu0b6k8d subscribed on channel /DelAccReq
+05-10-2017 00:49:57.0 [NOTICE] dxxco19i2t6duudkjecmxrnxu0b6k8d subscribed on channel /CardIdReq
