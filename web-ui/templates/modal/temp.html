@@ -1,0 +1,95 @@
+<style>
+    .placepicker-map {
+        min-height: 350px;
+    }
+    
+    .address-indicator {
+        color: gray;
+        font-size: 12px;
+        font-style: italic;
+        margin-left: 10px;
+        margin-top: -5px;
+    }
+</style>
+
+<form>
+    
+    <input hidden ng-model="school._id" />
+    <div class="form-group">
+        <input class="form-control" placeholder="Marque" ng-model="school.name" />
+    </div>
+    <div class="form-group">
+        <input class="form-control" placeholder="Model" ng-model="school.fullname" />
+    </div>
+    <div class="form-group">
+        <select class="form-control"  ng-model="school.public">
+           <option value="none" disabled selected>Status</option>
+           <option value="true">Public</option>
+           <option value="fasle">Privée</option>
+        </select>
+    </div>
+
+    <div class="checkbox">        
+    Enseignements:
+    
+    <label>
+      <input type="checkbox"  ng-model="school.teaching.maternelle"> Maternelle
+    </label>
+    <label>
+      <input type="checkbox" ng-model="school.teaching.primaire">Primaire
+    </label>
+    <label>
+      <input type="checkbox" ng-model="school.teaching.secondaire"> Secondaire
+    </label>
+  </div>
+
+    <div class="form-group">
+        <input class="form-control" placeholder="Email" ng-model="school.email" />
+    </div>
+    
+    <div class="form-group">
+        <input class="form-control" placeholder="Téléphone Fixe" ng-model="school.phone" />
+    </div>
+    
+    <div class="form-group">
+        <input class="form-control" placeholder="Site Web" ng-model="school.website" />
+    </div>
+
+    <div class="form-group">
+        <input ng-model="school.address" data-latitude="{{school.lat}}" data-longitude="{{school.lng}}" class="form-control" id="placepicker" data-latitude-input="#lat" data-longitude-input="#long" data-map-container-id="map-container" />
+        <p class="address-indicator" id="map-address"></p>
+        <input hidden id="lat" ng-model="school.lat" />
+        <input hidden id="long" ng-model="school.lng" />
+        <input hidden id="addr" ng-model="school.address" />
+        <div id="map-container" class="collapse">
+            <div class="placepicker-map thumbnail"></div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <ng-bs3-datepicker  ng-model="school.creation_date" placeholder="Date Ouverture" language="fr-ca" date-format="DD-MM-YYYY">
+    </div>
+    <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+        <a data-bb-handler="cancel" class="btn btn-danger" role="button" data-dismiss="modal">Annuler</a>
+        <a data-bb-handler="confirm" class="btn btn-default" role="button" data-dismiss="modal" ng-click="saveSchool(school)">Enregistrer</a>
+    </div>
+</form>
+
+
+<script>
+    setInterval(function(){
+        $("#lat").change();
+        $("#long").change();
+        $("#addr").val( $("#placepicker").val() );
+        $("#addr").change();
+
+    },10);
+    setTimeout(function(){
+        $("#placepicker").placepicker({
+            placeChanged: function(place) {
+                $("#map-address").html(place.formatted_address);
+            }
+        })        
+    },100);
+</script>

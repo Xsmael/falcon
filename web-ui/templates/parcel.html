@@ -1,0 +1,91 @@
+<style>
+    .border {
+        border-right: solid 1px;
+    }
+    .closebtn {
+        padding-left: 10px;
+        color: #888;
+        font-weight: bold;
+        float: right;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .closebtn:hover {
+        color: #000;
+    }
+    .chip {
+        display: inline-block;
+        padding: 0 25px;
+        height: 50px;
+        font-size: 16px;
+        line-height: 50px;
+        border-radius: 25px;
+        background-color: #f1f1f1;
+    }
+
+    .chip img {
+        float: left;
+        margin: 0 10px 0 -25px;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+    .search-box .search-input {
+        line-height: normal;
+    }
+
+    .search-box .search-input {
+        background-color: #f6f7f9;
+        border-radius: 5px;
+        border-style: none;
+        box-sizing: border-box;
+        font-family: Helvetica Neue, Segoe UI, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 28px;
+        margin: 0 0 10 10;
+    }
+    
+    .search-input {
+        background: transparent;
+        border: 0;
+        margin: 0;
+        outline: 0;
+        padding: 0;
+        width: 100%;
+    }
+</style>
+<div class="">
+    <div class="row">
+        <div class="col-md-2 border" >
+            <div class="search-box">
+                <input type="text" class="search-input">
+            </div>
+            <div class="chip">
+                <img src="img_avatar.png" alt="Person" width="96" height="96">
+                John Doe <br>
+                john@doe.com
+            </div>
+            <div class="chip">
+                <img src="img_avatar.png" alt="Person" width="96" height="96">
+                John Doe
+            </div>
+            <div class="chip">
+                <img src="img_avatar.png" alt="Person" width="96" height="96">
+                John Doe
+            </div>
+            <div class="chip">
+  <img src="img_avatar.png" alt="Person" width="96" height="96">
+  John Doe
+  <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+</div>
+            
+        
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row"></div>
+</div>

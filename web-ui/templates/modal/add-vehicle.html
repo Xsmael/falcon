@@ -1,0 +1,67 @@
+<style>
+    .placepicker-map {
+        min-height: 350px;
+    }
+    
+    .address-indicator {
+        color: gray;
+        font-size: 12px;
+        font-style: italic;
+        margin-left: 10px;
+        margin-top: -5px;
+    }
+</style>
+<div ng-controller="VehicleController">
+    <form>
+        <input hidden ng-model="v._id" />
+        <div class="form-group">
+            <input class="form-control" placeholder="Marque" ng-model="v.type" />
+        </div>
+        <div class="form-group">
+            <input class="form-control" placeholder="Marque" ng-model="v.brand" />
+        </div>
+        <div class="form-group">
+            <input class="form-control" placeholder="Model" ng-model="v.model" />
+        </div>
+    
+        <div class="form-group">
+            <input class="form-control" placeholder="Immatriculation" ng-model="v.numberplate" />
+        </div>
+        
+        <div class="form-group">
+            <input class="form-control" placeholder="Nombre de places" ng-model="v.seats" />
+        </div>
+        
+        <div class="form-group">
+            <textarea class="form-control" placeholder="Autres details" ng-model="v.details" />
+        </div>
+    
+        <div class="form-group">
+            <ng-bs3-datepicker  ng-model="v.date_running" placeholder="Date de mise en servie" language="fr-ca" date-format="DD-MM-YYYY">
+        </div>
+    
+    
+        <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+            <a data-bb-handler="cancel" class="btn btn-danger" role="button" data-dismiss="modal">Annuler</a>
+            <a data-bb-handler="confirm" class="btn btn-default" role="button" data-dismiss="modal" ng-click="create(v)">Enregistrer</a>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    setInterval(function(){
+        $("#lat").change();
+        $("#long").change();
+        $("#addr").val( $("#placepicker").val() );
+        $("#addr").change();
+
+    },10);
+    setTimeout(function(){
+        $("#placepicker").placepicker({
+            placeChanged: function(place) {
+                $("#map-address").html(place.formatted_address);
+            }
+        })        
+    },100);
+</script>

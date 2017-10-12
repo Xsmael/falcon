@@ -1,0 +1,76 @@
+  <div class="container">
+        <div class="row" style="margin-top: 5%"  >           
+            <div class="col-md-4">
+                
+                <form ng-show="addingNewUser">
+                    <div class="form-group">
+                        <label for="">Name:</label>
+                        <input type="text" class="form-control" ng-model="name">    
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="">Phone No.:</label>
+                        <input type="number" class="form-control" ng-model="phone">    
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="">Email:</label>
+                        <input type="email" class="form-control" ng-model="email">    
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="">Card ID:</label>
+                        <input type="text" class="form-control" ng-model="card_id" disabled>    
+                    </div>
+                    
+                    {{name}} <br>
+                    {{phone}}<br>
+                    {{email}}<br>
+                    
+                    <button id="submit" class="btn btn-success btn-block" ng-click="save()" >Submit</button>
+                </form>
+
+                <button class="btn btn-info btn-block" ng-click="newUser()" ng-show="!addingNewUser" style="min-height:45%" >
+                    <span ng-show="!watingForId" class="glyphicon glyphicon-plus" aria-hidden="true"></span>  
+                    <img ng-show="watingForId" src="./img/waiting-child.gif" alt="">                  
+                </button>
+            </div>
+       
+            <div class="col-md-8">
+                <div class="centered">
+                    <table class="table table-striped table-condensed -table-hover">
+                        <thead>
+                            <tr>
+                                
+                                <th> S.no</th> 
+                                <th> Name</th> 
+                                <th> Phone No</th> 
+                                <th> Email</th> 
+                                <th> Credit</th> 
+                                <th> 
+                                    <button type="button" class="btn btn-warning" ng-click="clearAll()">Delete All</button>
+                                </th> 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="active" ng-repeat="u in users">
+                                <td>{{$index+1}}</td>
+                                <td>{{u.name}}</td>
+                                <td>{{u.phone}}</td>
+                                <td>{{u.email}}</td>
+                                <td>{{u.credit}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> edit
+                                    </button>
+                                    <button type="button" class="btn btn-danger" ng-click="deleteUser(u)">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> delete
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
