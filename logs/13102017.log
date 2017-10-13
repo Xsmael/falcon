@@ -20687,3 +20687,62 @@
 13-10-2017 01:00:55.3 [DEBUG] message received on  /list/Vehicle
 13-10-2017 01:00:55.3 [DEBUG] 2q9bm066v4vwh78r4rfpz7jm16s37n5 publish on channel /list/Vehicle
 13-10-2017 01:00:55.3 [DEBUG] message received on  /list/Vehicle
+13-10-2017 10:32:12.2 [INFO] Connector running on Port 8888
+13-10-2017 10:32:12.2 [NOTICE] olanqqrty628a1fxne7r7jb8mcy3pbl subscribed on channel /list-req/*
+13-10-2017 10:32:12.2 [NOTICE] olanqqrty628a1fxne7r7jb8mcy3pbl subscribed on channel /UpdateAccReq
+13-10-2017 10:32:12.3 [NOTICE] olanqqrty628a1fxne7r7jb8mcy3pbl subscribed on channel /XlsGenerateJounal
+13-10-2017 10:32:12.3 [NOTICE] olanqqrty628a1fxne7r7jb8mcy3pbl subscribed on channel /create/*
+13-10-2017 10:32:12.3 [NOTICE] olanqqrty628a1fxne7r7jb8mcy3pbl subscribed on channel /ListAccReq
+13-10-2017 10:32:12.3 [NOTICE] olanqqrty628a1fxne7r7jb8mcy3pbl subscribed on channel /DelAccReq
+13-10-2017 10:32:13.8 [DEBUG] vogpve4m936tbnod86t7tudkltigihb publish on channel /list-req/Vehicle
+13-10-2017 10:32:13.8 [NOTICE] vogpve4m936tbnod86t7tudkltigihb subscribed on channel /list/Vehicle
+13-10-2017 10:32:13.8 [DEBUG] message received on  /list-req/Vehicle
+13-10-2017 10:32:13.8 [DEBUG] olanqqrty628a1fxne7r7jb8mcy3pbl publish on channel /list/Vehicle
+13-10-2017 10:32:41.9 [DEBUG] vogpve4m936tbnod86t7tudkltigihb publish on channel /list-req/Vehicle
+13-10-2017 10:32:41.9 [DEBUG] message received on  /list-req/Vehicle
+13-10-2017 10:32:41.9 [DEBUG] olanqqrty628a1fxne7r7jb8mcy3pbl publish on channel /list/Vehicle
+13-10-2017 10:33:00.4 [DEBUG] vogpve4m936tbnod86t7tudkltigihb publish on channel /create/Vehicle
+13-10-2017 10:33:00.4 [DEBUG] message received on  /create/Vehicle
+13-10-2017 10:33:00.4 [DEBUG] Vehicle created!
+13-10-2017 10:33:00.4 [DEBUG] olanqqrty628a1fxne7r7jb8mcy3pbl publish on channel /list/Vehicle
+13-10-2017 10:36:46.2 [WARNING] vogpve4m936tbnod86t7tudkltigihb unsubscribed on channel /list/Vehicle
+13-10-2017 10:36:46.6 [DEBUG] tzyr4alvha697d7d0ros08uuoeo7oag publish on channel /list-req/Vehicle
+13-10-2017 10:36:46.6 [NOTICE] tzyr4alvha697d7d0ros08uuoeo7oag subscribed on channel /list/Vehicle
+13-10-2017 10:36:46.6 [DEBUG] message received on  /list-req/Vehicle
+13-10-2017 10:36:46.6 [DEBUG] olanqqrty628a1fxne7r7jb8mcy3pbl publish on channel /list/Vehicle
+13-10-2017 10:36:51.2 [WARNING] tzyr4alvha697d7d0ros08uuoeo7oag unsubscribed on channel /list/Vehicle
+13-10-2017 10:36:51.8 [DEBUG] 89rqr9sk78aplj1mky75vjk8yaga42u publish on channel /list-req/Vehicle
+13-10-2017 10:36:51.8 [NOTICE] 89rqr9sk78aplj1mky75vjk8yaga42u subscribed on channel /list/Vehicle
+13-10-2017 10:36:51.8 [DEBUG] message received on  /list-req/Vehicle
+13-10-2017 10:36:51.8 [DEBUG] olanqqrty628a1fxne7r7jb8mcy3pbl publish on channel /list/Vehicle
+13-10-2017 10:39:12.6 [DEBUG] 89rqr9sk78aplj1mky75vjk8yaga42u publish on channel /list-req/Vehicle
+13-10-2017 10:39:12.6 [DEBUG] message received on  /list-req/Vehicle
+13-10-2017 10:39:12.6 [DEBUG] olanqqrty628a1fxne7r7jb8mcy3pbl publish on channel /list/Vehicle
+13-10-2017 10:39:42.9 [WARNING] 89rqr9sk78aplj1mky75vjk8yaga42u unsubscribed on channel /list/Vehicle
+13-10-2017 10:39:43.2 [DEBUG] je4u9zm6h9o0n1u5qknf36ykb65kyul publish on channel /list-req/Vehicle
+13-10-2017 10:39:43.2 [NOTICE] je4u9zm6h9o0n1u5qknf36ykb65kyul subscribed on channel /list/Vehicle
+13-10-2017 10:39:43.2 [DEBUG] message received on  /list-req/Vehicle
+13-10-2017 10:39:43.2 [DEBUG] olanqqrty628a1fxne7r7jb8mcy3pbl publish on channel /list/Vehicle
+13-10-2017 10:39:45.3 [DEBUG] je4u9zm6h9o0n1u5qknf36ykb65kyul publish on channel /list-req/Vehicle
+13-10-2017 10:39:45.3 [DEBUG] message received on  /list-req/Vehicle
+13-10-2017 10:39:45.3 [DEBUG] olanqqrty628a1fxne7r7jb8mcy3pbl publish on channel /list/Vehicle
+13-10-2017 10:39:47.7 [WARNING] je4u9zm6h9o0n1u5qknf36ykb65kyul unsubscribed on channel /list/Vehicle
+13-10-2017 10:39:48.0 [DEBUG] 8vef64aggt9wki6t7txrxe41dtwmqpn publish on channel /list-req/Vehicle
+13-10-2017 10:39:48.0 [NOTICE] 8vef64aggt9wki6t7txrxe41dtwmqpn subscribed on channel /list/Vehicle
+13-10-2017 10:39:48.0 [DEBUG] message received on  /list-req/Vehicle
+13-10-2017 10:39:48.0 [DEBUG] olanqqrty628a1fxne7r7jb8mcy3pbl publish on channel /list/Vehicle
+13-10-2017 10:39:49.9 [DEBUG] 8vef64aggt9wki6t7txrxe41dtwmqpn publish on channel /list-req/Vehicle
+13-10-2017 10:39:49.9 [DEBUG] message received on  /list-req/Vehicle
+13-10-2017 10:39:49.9 [DEBUG] olanqqrty628a1fxne7r7jb8mcy3pbl publish on channel /list/Vehicle
+13-10-2017 10:40:15.1 [DEBUG] 8vef64aggt9wki6t7txrxe41dtwmqpn publish on channel /create/Vehicle
+13-10-2017 10:40:15.1 [DEBUG] message received on  /create/Vehicle
+13-10-2017 10:40:15.1 [DEBUG] Vehicle created!
+13-10-2017 10:40:15.1 [DEBUG] olanqqrty628a1fxne7r7jb8mcy3pbl publish on channel /list/Vehicle
+13-10-2017 10:41:07.2 [INFO] Connector running on Port 8888
+13-10-2017 10:41:07.2 [NOTICE] xj26ho4e8mw3c4mfo9vkxz3hlvycccd subscribed on channel /list-req/*
+13-10-2017 10:41:07.2 [NOTICE] xj26ho4e8mw3c4mfo9vkxz3hlvycccd subscribed on channel /UpdateAccReq
+13-10-2017 10:41:07.2 [NOTICE] xj26ho4e8mw3c4mfo9vkxz3hlvycccd subscribed on channel /XlsGenerateJounal
+13-10-2017 10:41:07.2 [NOTICE] xj26ho4e8mw3c4mfo9vkxz3hlvycccd subscribed on channel /ListAccReq
+13-10-2017 10:41:07.2 [NOTICE] xj26ho4e8mw3c4mfo9vkxz3hlvycccd subscribed on channel /DelAccReq
+13-10-2017 10:41:07.2 [NOTICE] xj26ho4e8mw3c4mfo9vkxz3hlvycccd subscribed on channel /create/*
+13-10-2017 10:41:11.6 [NOTICE] eji6klcwnyo8njvzttl90qt12pluj1c subscribed on channel /list/Vehicle

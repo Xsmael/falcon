@@ -17,6 +17,7 @@
             <tr>
 
                 <th> S.no</th>
+                <th> Type</th>
                 <th> Marque</th>
                 <th> Modele</th>
                 <th> Plaque</th>
@@ -33,11 +34,13 @@
                 <td>{{v.brand}}</td>
                 <td>{{v.model}}</td>
                 <td>{{v.numberplate}}</td>
+                <td>{{v.seats}}</td>
                 <td>
                     <button type="button" class="btn btn-primary">
                                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> edit
                             </button>
-                    <button type="button" class="btn btn-danger" ng-click="deleteUser(u)">
+
+                    <button type="button" class="btn btn-danger" ng-click="delete(v)">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> delete
                             </button>
                 </td>

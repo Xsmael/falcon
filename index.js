@@ -56,7 +56,7 @@ connector.subscribe('/create/*').withChannel(function(channel, data) {
     }
 });
 
-connector.subscribe('/list/*').withChannel(function(channel, queryString) {
+connector.subscribe('/list-req/*').withChannel(function(channel, queryString) {
     if(!queryString) return;
     log.debug("message received on  "+channel);
     var ch= channel.split('/')[2];

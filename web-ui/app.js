@@ -103,7 +103,6 @@ angular.module("transport", ['faye','ui.router','ngBootbox',])
 
     $scope.create= function(v) {
         FayeFactory.publish('/create/Vehicle', v);    
-        console.info("CReating a buuuuuuuuuuuuuuuuus");    
     }
     $scope.update= function(v) {
         FayeFactory.publish('/update/Vehicle', v);        
@@ -117,7 +116,7 @@ angular.module("transport", ['faye','ui.router','ngBootbox',])
         console.log(objs);
     });
     
-    FayeFactory.publish('/list/Vehicle', {});
+    FayeFactory.publish('/list-req/Vehicle', {});
     console.warn("VehicleController");
 
 })
