@@ -51,7 +51,8 @@ connector.subscribe('/create/*').withChannel(function(channel, data) {
             break;
     
         default:
-            log.warning('this channel is not handled! : '+ch);
+            log.warning('this channel is not handled! : '+ch+'\nData:');
+            log.warning(data);
             break;
     }
 });
