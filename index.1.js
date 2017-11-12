@@ -1,13 +1,16 @@
 // server.start();
 var log=  require("noogger");
 var mongoose = require('mongoose');
-var fs= require("fs");
-var path= require('path');
 mongoose.connect('mongodb://127.0.0.1:27017/falcon');
 
-// Running the connector
 var faye= require('faye');
 var connector = new faye.Client('http://localhost:8888/faye');
+
+// Loading models
+var Vehicle=  require('./models/Vehicle');
+
+
+// Running the connector
 var http = require('http');
 faye = require('faye');
 
@@ -26,64 +29,50 @@ log.info("Connector running on Port "+PORT);
 
 
 
-// Loading models
-
-function loadModels() {
-    let models= {};
-    fs.readdir('./models',function (err,modelFiles) {
-        modelFiles.forEach(function (file) {
-            let model= path.parse(file).name;
-            log.debug('./models/'+model);
-            models[model]= require('./models/'+model);
-            log.debug("Loading : "+model);
-        });
-    });
-    return models;
-}
-var  models= loadModels();
- //* Done
-
 
 
 connector.subscribe('/create/*').withChannel(function(channel, data) {
     if(!data) return;
     log.debug("message received on  "+channel);
-    var modelName= channel.split('/')[2];
+    var ch= channel.split('/')[2];
 
-    if(models) { 
-        let model=  models[modelName];
-        model.create(data, function (err, res) {
-            if(err) log.error(err); 
-            else {
-                model.find( {}, function (err, docs) {
-                    if(err) log.error(err);
-                    connector.publish('/list/'+modelName,docs);        
-                }); 
-                log.debug( modelName+'created!');
-            } 
-        });
-    }
-    else {
-        log.warning('this channel is not handled! : '+channel+' with respect to the model:'+modelName+'\nData:');
-        log.warning(data);
+    switch (ch) {
+        case "Vehicle":
+            Vehicle.create(data, function (err, res) {
+                if(err) log.error(err); 
+                else {
+                    Vehicle.find( {}, function (err, docs) {
+                        if(err) log.error(err);
+                        connector.publish('/list/Vehicle',docs);        
+                    }); 
+                    log.debug('Vehicle created!');
+                } 
+            });
+            break;
+    
+        default:
+            log.warning('this channel is not handled! : '+ch+'\nData:');
+            log.warning(data);
+            break;
     }
 });
 
 connector.subscribe('/list-req/*').withChannel(function(channel, queryString) {
     if(!queryString) return;
     log.debug("message received on  "+channel);
-    var modelName= channel.split('/')[2];
+    var ch= channel.split('/')[2];
+
+    switch (ch) {
+        case "Vehicle":
+            Vehicle.find(queryString, function (err, docs) {
+                if(err) log.error(err);
+                connector.publish('/list/Vehicle',docs);        
+            }); 
+            break;
     
-    if(1) { 
-        let model=  models[modelName];
-        model.find(queryString, function (err, docs) {
-            if(err) log.error(err);
-            connector.publish('/list/'+modelName,docs);        
-        }); 
-    }
-    else {
-        log.warning('this channel is not handled! : '+channel+' with respect to the model:'+modelName+'\n queryString:');
-        log.warning(queryString);
+        default:
+            log.warning('this channel is not handled! : '+ch);
+            break;
     }  
 });
 

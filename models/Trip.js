@@ -1,7 +1,7 @@
 var mg = require('mongoose');
 var Schema = mg.Schema;  
 
-module.exports = mg.model('Vehicle', new  Schema({
+module.exports = mg.model('Trip', new  Schema({
         from: String,
         to: String,
         time: String,
