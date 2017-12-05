@@ -1,5 +1,5 @@
 {
-  "name": "syslog",
+  "name": "falcon",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,10 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "faye": "^1.2.4",
+    "http-server": "^0.10.0",
     "json2xls": "^0.1.2",
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.14",
-    "noogger": "^0.1.8",
-    "serialport": "^5.0.0"
+    "noogger": "^0.1.8"
   }
 }

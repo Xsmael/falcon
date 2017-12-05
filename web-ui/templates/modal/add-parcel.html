@@ -1,0 +1,64 @@
+<style>
+    .placepicker-map {
+        min-height: 350px;
+    }
+    
+    .address-indicator {
+        color: gray;
+        font-size: 12px;
+        font-style: italic;
+        margin-left: 10px;
+        margin-top: -5px;
+    }
+</style>
+<div>
+    <form>
+        <input hidden ng-model="o._id" />
+        <div class="form-group">
+            <input class="form-control" placeholder="De" ng-model="o.from" />
+        </div>
+        <div class="form-group">
+            <input class="form-control" placeholder="A" ng-model="o.to" />
+        </div>
+        <div class="form-group">
+            <input class="form-control" placeholder="Contenu" ng-model="o.content" />
+        </div>
+    
+        <div class="form-group">
+            <input class="form-control" placeholder="Envoyeur" ng-model="o.sender" />
+        </div>
+        
+        <div class="form-group">
+            <input class="form-control" placeholder="Receveur" ng-model="o.receiver" />
+        </div>
+        
+        <div class="form-group">
+            <textarea class="form-control" placeholder="Code Secret" ng-model="o.secret" />
+        </div>
+    
+    
+        <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+            <a class="btn btn-danger"  data-dismiss="modal">Annuler</a>
+            <a ng-show="!isEditing" class="btn btn-default"  data-dismiss="modal" ng-click="create(o)">Enregistrer</a>
+            <a ng-show="isEditing" class="btn btn-default"  data-dismiss="modal" ng-click="update(o)">Enregistrer</a>
+       </div>
+    </form>
+</div>
+
+
+<script>
+    // setInterval(function(){
+    //     $("#lat").change();
+    //     $("#long").change();
+    //     $("#addr").val( $("#placepicker").val() );
+    //     $("#addr").change();
+
+    // },10);
+    // setTimeout(function(){
+    //     $("#placepicker").placepicker({
+    //         placeChanged: function(place) {
+    //             $("#map-address").html(place.formatted_address);
+    //         }
+    //     })        
+    // },100);
+</script>

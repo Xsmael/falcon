@@ -1,0 +1,22 @@
+{
+  "name": "piter",
+  "version": "0.0.1",
+  "description": "raspberry pi based router & firewall",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xsmael",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.6",
+    "angular-bootstrap-toggle": "^0.1.2",
+    "angular-faye": "^0.2.2",
+    "angular-ui-router": "^0.4.3",
+    "bootstrap": "^3.3.7",
+    "faye": "^1.2.4",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "ngbootbox": "^0.2.0"
+  }
+}

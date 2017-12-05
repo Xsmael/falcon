@@ -1,5 +1,9 @@
 // server.start();
-var log=  require("noogger");
+var log=  require("noogger").init({
+	consoleOutput : true,
+	outputPath: "logs/",
+	fileNamePrefix:"falcon-"
+});
 var mongoose = require('mongoose');
 var fs= require("fs");
 var path= require('path');
@@ -26,11 +30,14 @@ log.info("Connector running on Port "+PORT);
 
 
 
+function absolutePath(relative) {
+    return path.join(__dirname, relative);
+}
 // Loading models
 
 function loadModels() {
     let models= {};
-    fs.readdir('./models',function (err,modelFiles) {
+    fs.readdir(absolutePath("models"),function (err,modelFiles) {
         modelFiles.forEach(function (file) {
             let model= path.parse(file).name;
             log.debug('./models/'+model);
@@ -40,6 +47,7 @@ function loadModels() {
     });
     return models;
 }
+
 var  models= loadModels();
  //* Done
 
@@ -69,6 +77,61 @@ connector.subscribe('/create/*').withChannel(function(channel, data) {
     }
 });
 
+connector.subscribe('/update/*').withChannel(function(channel, data) {
+
+    if(!data) return;
+    log.debug("message received on  "+channel);
+    var modelName= channel.split('/')[2];
+
+    if(models) { 
+        let model=  models[modelName];
+        let id= data._id;
+         console.log(data);
+         delete data._id;
+         console.log(data);
+        model.findByIdAndUpdate(id,data, function (err, res) {
+            if(err) log.error(err); 
+            else {
+                model.find( {}, function (err, docs) {
+                    if(err) log.error(err);
+                    connector.publish('/list/'+modelName,docs);        
+                }); 
+                log.debug( modelName+'updated!');
+            } 
+        });
+    }
+    else {
+        log.warning('this channel is not handled! : '+channel+' with respect to the model:'+modelName+'\nData:');
+        log.warning(data);
+    }  
+});
+
+
+connector.subscribe('/delete/*').withChannel(function(channel, data) {
+    
+    if(!data) return;
+    log.debug("message received on  "+channel);
+    var modelName= channel.split('/')[2];
+
+    if(models) { 
+        let model=  models[modelName];
+        model.findByIdAndRemove(data._id, function (err, res) {
+            if(err) log.error(err); 
+            else {
+                model.find( {}, function (err, docs) {
+                    if(err) log.error(err);
+                    connector.publish('/list/'+modelName,docs);        
+                }); 
+                log.debug( modelName+' deleted!');
+            } 
+        });
+    }
+    else {
+        log.warning('this channel is not handled! : '+channel+' with respect to the model:'+modelName+'\nData:');
+        log.warning(data);
+    }
+});
+
 connector.subscribe('/list-req/*').withChannel(function(channel, queryString) {
     if(!queryString) return;
     log.debug("message received on  "+channel);
@@ -88,12 +151,7 @@ connector.subscribe('/list-req/*').withChannel(function(channel, queryString) {
 });
 
 
-connector.subscribe('/UpdateAccReq', function (data) {
-    
-    if(data) {
-        Vehicle.findByIdAndUpdate(); // impl
-    }    
-});
+
 
 connector.subscribe('/ListAccReq', function (data) {
     
@@ -107,20 +165,6 @@ connector.subscribe('/ListAccReq', function (data) {
     }    
 });
 
-connector.subscribe('/DelAccReq', function (data) {
-
-    if(data) {
-        Vehicle.findByIdAndRemove(data._id,function (err) {
-            if(err) log.error(err);
-            else {
-                Vehicle.find( {}, function (err, users) {
-                    if(err) log.error(err);
-                    connector.publish('/ListAcc',users);        
-                }); 
-            }
-        });
-    }
-});
 
 connector.subscribe('/XlsGenerateJounal', function (boo) {
     generateXlsJournal();

@@ -1,114 +1,131 @@
-<!DOCTYPE html>
-
+<!--
+Author: http://webthemez.com
+Note: Donate to remove backlink/credits in the footer(webthemez.com)--
+Any help: webthemez@gmail.com
+Licence: Creative Commons Attribution 3.0** - http://creativecommons.org/licenses/by/3.0/
+-->
+<!doctype>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Xsmael puissancisma@gmail.com">
-    <title>piTer</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, maximum-scale=1">
+<title>Welcome</title>
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css"> 
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
+<link href="css/flip.css" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./node_modules/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.css">
-    <link rel="stylesheet" href="./app.css">
+<style>
+.main-container
+{
+    height: 400px;
+    position: relative;
+}
 
-    <script src="./node_modules/jquery/dist/jquery.js"></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="./node_modules/bootbox/bootbox.js"></script>
+.bfooter {
+    float: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color : green;
+}
+ 
+ #header_wrapper {
+    box-shadow: -4px -2px 4px rgba(60, 60, 60, 0.44);
+    border-top: 1px solid #D2D2D2;
+ }
+ .logo img {
+   height: 55px;
+    margin-top: 17px;
+    margin-right: 10px;
+ }
 
-    <script src="./node_modules/angular/angular.js"></script>
-    <script src="./node_modules/ngbootbox/dist/ngBootbox.js"></script>
-    <script src="./node_modules/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.js"></script>
-    
-    <script src="./node_modules/faye/client/faye-browser.js" ></script>
-    <script src="./node_modules/angular-faye/build/angular-faye.js" ></script>
-    <script src="./node_modules/angular-ui-router/release/angular-ui-router.js" ></script>
-    <script src="app.js" ></script>
+
+
+</style>
 
 </head>
-
-<body ng-app="transport">
-    <div ng-controller="HomeController" class="container">
-        <header id="header">
-            <div class="row">
-                <div class="col-md-2 col-xs-12  icon-container">
-                    <a ui-sref="home"><img class="app-icon"  id="home-logo" src="./img/app-icon-small.png" /></a>
+<body>
+<!--Hero_Section-->
+<section id="hero_section" class="top_cont_outer main-container" style="height: 100vh;">
+  <div class="hero_wrapper">
+    <div class="container">
+      <div class="hero_section">
+        <div class="row">
+            <div id="flip-toggle" class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                  <div class="front"> 
+                      <!-- front content -->                    
+                      <div class="top_left_cont zoomIn wow animated"> 
+                          <h2> <span tyle="color: #FFE800; ">OUAGADOUGOU</span><br> <strong>WELI  &nbsp; TR <i class="fa fa-bus" style="color: #FFE800; "></i>  NSPORT</strong></h2>
+            
+                            <div class="underline"></div>             
+                          <a onclick="document.querySelector('#flip-toggle').classList.toggle('hover');" class="read_more2">OPEN</a> 
+                        </div>
+                  </div>
+                  <div class="back" style="padding-top:100px;">
+                      <!-- back content -->
+                      <h2> <strong> WELCOME </strong></h2>
+                      <div>
+                          <div class="form" >
+                            <input class="input-text" type="text" name="" placeholder="User" >
+                            <input class="input-text" type="password" name="" placeholder="Password" >
+                            <a  onclick="document.querySelector('#flip-toggle').classList.toggle('hover');login()" class="read_more2">LOGIN</a> 
+                          </div>
+                      </div>
+                   </div>
                 </div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=" bfooter ">
+    <div class="logo"><a href="https://centricnode.com/"><img src="img/logo.png" alt="logo"></a></div>
+      <header id="header_wrapper">
+          <div class="container">
+            <div class="header_box">
+            <nav class="navbar navbar-inverse" role="navigation">
+              <div class="navbar-header">
+                <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                </div>
+              <div id="main-nav" class="collapse navbar-collapse navStyle">
+              <ul class="nav navbar-nav" id="mainNav">
+                <li class="active"><a href="#hero_section" class="scroll-link">Home</a></li>
+                <li><a href="#aboutUs" class="scroll-link">About Us</a></li>
+                <li><a href="#service" class="scroll-link">Routes</a></li>
+                <li><a href="#Portfolio" class="scroll-link">Projects</a></li>
+                <li><a href="#clients" class="scroll-link">Experience</a></li>
+                <li><a href="#team" class="scroll-link">Testimonial</a></li>
+                <li><a href="#contact" class="scroll-link">Contact</a></li>
+              </ul>
+              </div>
+           </nav>
             </div>
-
+          </div>
         </header>
-    </div>
-    <div class="container-fluid" style="margin: 0px 100px">
-        <div class="row">
-            <div class="col-md-2">
-                <ul class="options-large">
-                    <li ng-show="!logedIn">
-                        <a id="user-menu" ui-sref="home" ui-sref-active="active-option">
-                                <i class="fa fa-home fa-4x"></i><br />
-                            Acceuil
-                        </a>
-                    </li>
+  </div>
+</section>
 
-                    <li ng-show="!logedIn">
-                        <a id="customer-menu" ui-sref="trip" ui-sref-active="active-option">
-                                <i class="fa fa-tags fa-4x"></i><br />
-                            Tickets
-                        </a>
-                    </li>
-                    <li ng-show="!logedIn">
-                        <a id="user-menu" ui-sref="parcel" ui-sref-active="active-option">
-                                <i class="fa fa-suitcase fa-4x"></i><br />
-                            Colis
-                        </a>
-                    </li>
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-                    <li ng-show="!logedIn">
-                        <a id="user-menu" ui-sref="trip" ui-sref-active="active-option">
-                                <i class="fa fa-exchange fa-4x"></i><br />
-                            Voyages
-                        </a>
-                    </li>
-                    <li ng-show="!logedIn">
-                        <a id="user-menu" ui-sref="vehicle" ui-sref-active="active-option">
-                                <i class="fa fa-bus fa-4x"></i><br />
-                            Vehicules
-                        </a>
-                    </li>
-
-                    <li ng-show="!logedIn">
-                        <a id="user-menu" ui-sref="settings" ui-sref-active="active-option">
-                                <i class="fa fa-sliders fa-4x"></i><br />
-                            Parametres
-                        </a>
-                    </li>
-
-
-                </ul>
-                <div id="loader-indicator" title="Loading..." style="display:none;"></div>
-            </div>
-
-            <div class="col-md-10">
-                <ui-view></ui-view>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <br>
-    <div class="jumbotron" style="margin-top:300px;">
-        <div class="row">
-            <div class="col-md-2 cp1 "></div>
-            <div class="col-md-2 cp2"></div>
-            <div class="col-md-2 cp3"></div>
-            <div class="col-md-2 cp4"></div>
-            <div class="col-md-2 cp5"></div>
-        </div>
-    </div>
+<script>
+  function login(user, pass) {
+    
+    setTimeout(() => {
+      $("body").fadeOut(300,function(){
+        window.location.href='app.html';
+        
+      })
+    }, 200);
+  }
+</script>
 
 
 </body>
-
 </html>
+
+
+

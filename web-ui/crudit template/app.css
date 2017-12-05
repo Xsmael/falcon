@@ -1,0 +1,437 @@
+/* 
+  Allow angular.js to be loaded in body, hiding cloaked elements until 
+  templates compile.  The !important is important given that there may be 
+  other selectors that are more specific or come later and might alter display.  
+ */
+
+ /**
+ Color pallette:
+ https://coolors.co/fd4f57-2e2e2e-c61931-ffffff-ccc8cd
+
+ */
+
+ .cp1 {
+     background-color: #fd4f57;
+     height:100px;
+ }
+ .cp2 {
+     background-color: #2e2e2e;
+     height:100px;
+ }
+ .cp3 {
+     background-color: #c61931;
+     height:100px;
+ }
+ .cp4 {
+     background-color: #ffffff;
+     height:100px;
+ }
+ .cp5 {
+     background-color: #ccc8cd;
+     height:100px;
+ }
+/** Fonts */
+
+@font-face {
+    font-family: traff;
+    src: url(../fonts/saucer-bb.regular.ttf);
+}
+
+.ng-cloak {
+    display: none !important;
+}
+
+body {
+    color: black;
+    font-family: "open sans", "Segoe UI", "Segoe WP", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    background-color: #ffffff;
+}
+
+.welcome h1 {
+    text-align: center;
+    font-family: traff;
+    font-size: 15vw;
+    font-weight: lighter;
+    color: rgba(0, 0, 0, 0.42);
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
+}
+
+.red {
+    color: #d9534f;
+}
+
+.green {
+    color: #5cb85c;
+}
+
+
+/**
+  *	Header
+  */
+
+header {
+    margin-bottom: 50px;
+    margin-top: 15px;
+    color: white;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.app-logo {
+    margin-top: 30px;
+    margin-right: 5px;
+    height: 120px;
+}
+
+.icon-container {
+    text-align: center;
+    display: block;
+    float: left;
+}
+.app-icon {
+    margin-top: 35px;
+    margin-right: 40px;
+    height: 70px;
+}
+
+/**
+  *	Menu Large
+*/
+
+.options-large {
+    font-size: 13px;
+}
+.options-large li {
+    list-style-type: none;
+    display: block;
+}
+
+.options-large li a {
+    background-color: #FFFFFF;
+    color: #FD4F57 !important;
+    font-weight: bold;
+    border-radius: 6px;
+    display: inline-block;
+    color: white;
+    padding: 13px;
+    margin-bottom: 15px; 
+    width: 155px;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.options-large li a:hover {
+    background-color: #ccc8cd;
+    color: white;
+    font-style: normal;
+}
+.options-large .setting-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+.map-icon {
+    font-size: 30px;
+    padding: 0px 0px;
+    margin: -5px -5px;
+}
+#status {
+    float: right;
+    height: 105px;
+    margin-top: 25px;
+    border-radius: 6px;
+    display: inline-block;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #2B2B2B;
+    color: white;
+    font-style: normal;
+}
+#status .glyphicon {
+    margin-right: 5px;
+}
+#status .label {
+    display: block;
+    margin-top: 2px;
+}
+.menu-button {
+    position: relative;
+}
+.label-notification {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+/**
+  * Menu Small
+  */
+
+.sub-option {
+    padding: 10px 16px;
+    font-size: 15px; 
+    line-height: 1.3333333;
+    border-radius: 3px;
+}
+
+
+  /* to be sorted out
+.app-icon-small {
+    height: 45px;
+    float: left;
+}
+.visible-xs.icon-container {
+    text-align: center;
+    margin-bottom: 5px;
+}
+.visible-xs.icon-container span {
+    line-height: 65px;
+    vertical-align: middle;
+    margin-top: 5px;
+    font-size: 25px;
+}
+.visible-xs.icon-container strong {
+    color: gray;
+}
+.active-option {
+    background-color: #3B3B3B;
+}
+
+*/
+
+/**
+  *	Page content
+  */
+#page {
+    background-color: #ffffff;
+    color: black;
+    -webkit-box-shadow: 0 0 10px 1px #C51919;
+    -moz-box-shadow: 0 0 10px 1px #FD4F57;
+    box-shadow: 0 0 10px 1px #FD4F57;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 20px;
+    margin: -10px;
+    min-height: 420px;
+}
+#outer-page {
+    background-color: #ffffff;
+    color: black;
+    -webkit-box-shadow: 0 0 10px 1px #C51919;
+    -moz-box-shadow: 0 0 10px 1px #FD4F57;
+    box-shadow: inset 0 0 10px 4px #FD4F57;
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 20px;
+    min-height: 420px;
+}
+.downloading {
+    background-color: #D9EAFC;
+}
+.title {
+    margin-top: 0;
+    font-size: 25px;
+    line-height: 30px;
+}
+.sub-title {
+    margin-top: 0;
+    font-size: 15px;
+    color: #5E5E5E;
+}
+.bootstrap-select {
+    width: 100%;
+}
+
+
+.timeline-profilepic {
+    width: 70px;
+    margin-top: 3px;
+}
+
+/*
+* about page
+*/
+.update-behind {
+    color: red;
+}
+.update-current {
+    color: green;
+}
+
+/**
+  *	Footer
+  */
+footer {
+    margin-top: 25px;
+    margin: 100px;
+}
+.float-right {
+    float: right;
+}
+.version {
+    color: #999999;
+}
+.about-icon-container {
+    text-align: center;
+    padding-top: 20px;
+}
+.about-icon {
+    font-size: 90px;
+}
+
+/**
+  *   Misc
+  */
+
+/*
+#loader {
+	position: absolute;
+	right: 20px;
+	bottom: 15px;
+	width: 30px;
+	height: 30px;
+	margin: 0 0 0 -15px;
+	border: 8px solid #fff;
+	border-right-color: transparent;
+	border-radius: 50%;
+	box-shadow: 0 0 25px 2px #eee;
+	-webkit-animation: spin 1s linear infinite;
+	-moz-animation: spin 1s linear infinite;
+	-ms-animation: spin 1s linear infinite;
+	-o-animation: spin 1s linear infinite;
+	animation: spin 1s linear infinite;
+}
+*/
+#loader-indicator {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    width: 30px;
+    height: 30px;
+    margin: 0 0 0 -15px;
+    border-width: 8px;
+    border-style: double;
+    border-color: #838383 rgba(180, 174, 174, 0.31) #FFF #CBCBCB;
+    border-radius: 50%;
+    box-shadow: 0px 0px 25px 2px #EEE;
+    -webkit-animation: spin 0.7s linear infinite;
+    -moz-animation: spin 0.7s linear infinite;
+    -ms-animation: spin 0.7s linear infinite;
+    -o-animation: spin 0.7s linear infinite;
+    animation: spin 0.7s linear infinite;
+}
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+        opacity: 0.4;
+    }
+    
+    50% {
+        -webkit-transform: rotate(180deg);
+        opacity: 1;
+    }
+    
+    to {
+        -webkit-transform: rotate(360deg);
+        opacity: 0.4;
+    }
+}
+@-moz-keyframes spin {
+    from {
+        -moz-transform: rotate(0deg);
+        opacity: 0.4;
+    }
+    
+    50% {
+        -moz-transform: rotate(180deg);
+        opacity: 1;
+    }
+    
+    to {
+        -moz-transform: rotate(360deg);
+        opacity: 0.4;
+    }
+}
+@-ms-keyframes spin {
+    from {
+        -ms-transform: rotate(0deg);
+        opacity: 0.4;
+    }
+    
+    50% {
+        -ms-transform: rotate(180deg);
+        opacity: 1;
+    }
+    
+    to {
+        -ms-transform: rotate(360deg);
+        opacity: 0.4;
+    }
+}
+@-o-keyframes spin {
+    from {
+        -o-transform: rotate(0deg);
+        opacity: 0.4;
+    }
+    
+    50% {
+        -o-transform: rotate(180deg);
+        opacity: 1;
+    }
+    
+    to {
+        -o-transform: rotate(360deg);
+        opacity: 0.4;
+    }
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+        opacity: 0.2;
+    }
+    
+    50% {
+        transform: rotate(180deg);
+        opacity: 1;
+    }
+    
+    to {
+        transform: rotate(360deg);
+        opacity: 0.2;
+    }
+}
+
+/* MISC
+*/
+.form-control[readonly] {
+    cursor: auto;
+    background-color: #fff;
+    opacity: 1;
+}
+iframe,
+object,
+embed {
+    max-width: 100%;
+}
+
+/* BUG FIXING AND LIBS ALTERING */
+
+/* puts the google places autocomplete dropdown results above the bootstrap modal 1050 zindex. */
+.pac-container {
+    z-index: 1051 !important;
+}

@@ -11,7 +11,7 @@
         margin-top: -5px;
     }
 </style>
-<div ng-init="  v= isEditing? toEdit: null">
+<div ng-controller="VehicleController">
     <form>
         <input hidden ng-model="v._id" />
         <div class="form-group">
@@ -42,27 +42,26 @@
     
     
         <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
-            <a  class="btn btn-danger"  data-dismiss="modal" ng-click="isEditing=false">Annuler</a>
-            <a ng-show="!isEditing" class="btn btn-default"  data-dismiss="modal" ng-click="create(v)">Enregistrer</a>
-            <a ng-show="isEditing" class="btn btn-default"  data-dismiss="modal" ng-click="update(v)">Enregistrer</a>
+            <a data-bb-handler="cancel" class="btn btn-danger"  data-dismiss="modal">Annuler</a>
+            <a data-bb-handler="confirm" class="btn btn-default"  data-dismiss="modal" ng-click="create(v)">Enregistrer</a>
         </div>
     </form>
 </div>
 
 
 <script>
-    // setInterval(function(){
-    //     $("#lat").change();
-    //     $("#long").change();
-    //     $("#addr").val( $("#placepicker").val() );
-    //     $("#addr").change();
+    setInterval(function(){
+        $("#lat").change();
+        $("#long").change();
+        $("#addr").val( $("#placepicker").val() );
+        $("#addr").change();
 
-    // },10);
-    // setTimeout(function(){
-    //     $("#placepicker").placepicker({
-    //         placeChanged: function(place) {
-    //             $("#map-address").html(place.formatted_address);
-    //         }
-    //     })        
-    // },100);
+    },10);
+    setTimeout(function(){
+        $("#placepicker").placepicker({
+            placeChanged: function(place) {
+                $("#map-address").html(place.formatted_address);
+            }
+        })        
+    },100);
 </script>

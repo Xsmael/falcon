@@ -11,40 +11,40 @@
         margin-top: -5px;
     }
 </style>
-<div ng-init="  v= isEditing? toEdit: null">
+<div ng-init="o= isEditing? toEdit: null">
     <form>
-        <input hidden ng-model="v._id" />
+        <input hidden ng-model="o._id" />
         <div class="form-group">
-            <input class="form-control" placeholder="Type" ng-model="v.type" />
+            <input class="form-control" placeholder="Destination" ng-model="o.to" />
         </div>
         <div class="form-group">
-            <input class="form-control" placeholder="Marque" ng-model="v.brand" />
+            <input class="form-control" placeholder="Siege" ng-model="o.seat_no" />
         </div>
         <div class="form-group">
-            <input class="form-control" placeholder="Model" ng-model="v.model" />
-        </div>
-    
-        <div class="form-group">
-            <input class="form-control" placeholder="Immatriculation" ng-model="v.numberplate" />
-        </div>
-        
-        <div class="form-group">
-            <input class="form-control" placeholder="Nombre de places" ng-model="v.seats" />
-        </div>
-        
-        <div class="form-group">
-            <textarea class="form-control" placeholder="Autres details" ng-model="v.details" />
+            <input class="form-control" placeholder="Date allé" type="date" ng-model="o.date_departure" />
         </div>
     
         <div class="form-group">
-            <ng-bs3-datepicker  ng-model="v.date_running" placeholder="Date de mise en servie" language="fr-ca" date-format="DD-MM-YYYY">
+            <input class="form-control" placeholder="Date retour" type="date" ng-model="o.date_return" />
+        </div>
+        
+        <div class="form-group">
+            <input class="form-control" placeholder="Voyageur" ng-model="o.traveller" />
+        </div>
+        
+        <div class="form-group">
+            <textarea class="form-control" placeholder="Possesions" ng-model="o.details" />
+        </div>
+    
+        <div class="form-group">
+            <ng-bs3-datepicker  ng-model="o.date_running" placeholder="Date de mise en servie" language="fr-ca" date-format="DD-MM-YYYY">
         </div>
     
     
         <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
-            <a  class="btn btn-danger"  data-dismiss="modal" ng-click="isEditing=false">Annuler</a>
-            <a ng-show="!isEditing" class="btn btn-default"  data-dismiss="modal" ng-click="create(v)">Enregistrer</a>
-            <a ng-show="isEditing" class="btn btn-default"  data-dismiss="modal" ng-click="update(v)">Enregistrer</a>
+            <a class="btn btn-danger"  data-dismiss="modal">Annuler</a>
+            <a ng-show="!isEditing" class="btn btn-default"  data-dismiss="modal" ng-click="create(o)">Enregistrer</a>
+            <a ng-show="isEditing" class="btn btn-default"  data-dismiss="modal" ng-click="update(o)">Enregistrer</a>
         </div>
     </form>
 </div>

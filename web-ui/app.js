@@ -1,6 +1,6 @@
 
 
-angular.module("transport", ['faye','ui.router','ngBootbox',])
+angular.module("transport", ['faye','ui.router', 'ui.toggle','ngBootbox',])
 
    .config( function($stateProvider, $urlRouterProvider) {
 
@@ -26,6 +26,11 @@ angular.module("transport", ['faye','ui.router','ngBootbox',])
                     controller: "TripController",
                     templateUrl: 'templates/trip.html'
                 })
+                .state('ticket', {
+                    url: '/ticket',
+                    controller: "TicketController",
+                    templateUrl: 'templates/ticket.html'
+                })
                 .state('vehicle', {
                     url: '/vehicle',
                     controller: "VehicleController",
@@ -34,7 +39,7 @@ angular.module("transport", ['faye','ui.router','ngBootbox',])
                 .state('parcel', {
                     url: '/parcel',
                     controller: "ParcelController",
-                    templateUrl: 'templates/history.html'
+                    templateUrl: 'templates/parcel.html'
                 })
                 .state('settings', {
                     url: '/settings',
@@ -58,17 +63,27 @@ angular.module("transport", ['faye','ui.router','ngBootbox',])
                 positionY: 'bottom'
             });
         })*/
-        .filter('fromMap', function() {
-            return function(input) {
-                var out = {};
-                input.forEach((v, k) => out[k] = v);
-                return out;
-            };
-        })
+
 
     .factory('FayeFactory', function($faye, $rootScope) {
             return $faye("http://localhost:8888/");
     })
+    .service("VehicleService", function(FayeFactory,$rootScope) {
+        FayeFactory.subscribe('/list/Vehicle', function(vehicles) {            
+            $rootScope.vehicles=vehicles;
+        });
+        FayeFactory.publish('/list-req/Vehicle', {});       
+        
+        this.getVehicle=  function(id) {
+            for( var i= 0 ; i<  $rootScope.vehicles.length; i++) { 
+                var v= $rootScope.vehicles[i];
+                if(v._id == id) {
+                    return v;
+                }
+            }
+        }
+        
+    }) 
       
     .service('SoundNotif', function () {
         this.play= function(which) {
@@ -99,21 +114,36 @@ angular.module("transport", ['faye','ui.router','ngBootbox',])
 
 })
 .controller("VehicleController",function($scope, $rootScope, FayeFactory){
-    $scope.vehicles= [];
+    $scope.vehicles= [];  
+    $scope.isEditing= false;
+
+    $scope.dialogOptions= {
+        scope: $scope
+    }
+
+
+    $scope.edit= function(v) {
+        $scope.toEdit= v;
+        $scope.isEditing= true;
+    }
 
     $scope.create= function(v) {
-        FayeFactory.publish('/create/Vehicle', v);    
+        FayeFactory.publish('/create/Vehicle', v);
+        console.log("Creating...");    
+        $scope.isEditing= false;    
     }
     $scope.update= function(v) {
-        FayeFactory.publish('/update/Vehicle', v);        
+        FayeFactory.publish('/update/Vehicle', v);   
+        $scope.isEditing= false;    
     }
     $scope.delete= function(v) {
         FayeFactory.publish('/delete/Vehicle', v);        
+        console.log("Deleting...");    
     }
 
     FayeFactory.subscribe('/list/Vehicle', function(objs) {
         $scope.vehicles= objs;
-        console.log(objs);
+        console.info(objs);
     });
     
     FayeFactory.publish('/list-req/Vehicle', {});
@@ -121,89 +151,120 @@ angular.module("transport", ['faye','ui.router','ngBootbox',])
 
 })
 
-.controller("SettingsController",function($scope, $rootScope){
+.controller("TicketController",function($scope, $rootScope, FayeFactory){
+    $scope.tickets= [];
+    $scope.isEditing= false;        
 
+    $scope.dialogOptions= {
+        scope: $scope
+    }
+
+    $scope.edit= function(o) {
+        $scope.toEdit= o;
+        $scope.isEditing= true;
+    }
+
+    $scope.create= function(o) {
+        FayeFactory.publish('/create/Ticket', o);
+        $scope.isEditing= false;        
+    }
+    $scope.update= function(o) {
+        FayeFactory.publish('/update/Ticket', o);     
+        $scope.isEditing= false;        
+    }
+    $scope.delete= function(o) {
+        FayeFactory.publish('/delete/Ticket', o);        
+    }
+
+    FayeFactory.subscribe('/list/Ticket', function(objs) {
+        $scope.tickets= objs;
+        console.log(objs);
+    });
+    
+    FayeFactory.publish('/list-req/Ticket', {});
+    console.warn("TicketController");
 })
 
 .controller("ParcelController",function($scope, $rootScope, FayeFactory){
-    $scope.journal= [];
-    $scope.showDownloadLink=false;
+    $scope.parcels= [];
 
-    FayeFactory.subscribe('/RealtimeJournal', function(j) {
-        $scope.journal.push(j);
-        console.log(j);
-    });
-
-    FayeFactory.subscribe('/XlsJournalReady', function(link) {
-        if(link){
-            $scope.showDownloadLink=true;
-            $scope.link=link;
-        }
-    });
-    
-
-    $scope.generateJournal= function () {
-        FayeFactory.publish('/XlsGenerateJounal',{})
+    $scope.dialogOptions= {
+        scope: $scope
     }
 
+    $scope.create= function(o) {
+        FayeFactory.publish('/create/Parcel', o);    
+    }
+    $scope.update= function(o) {
+        FayeFactory.publish('/update/Parcel', o);        
+    }
+    $scope.delete= function(o) {
+        FayeFactory.publish('/delete/Parcel', o);        
+    }
+
+    FayeFactory.subscribe('/list/Parcel', function(objs) {
+        $scope.parcels= objs;
+        console.log(objs);
+    });
+    
+    FayeFactory.publish('/list-req/Parcel', {});
+    console.warn("ParcelController");
 })
 
+.controller("TripController",function($scope, $rootScope, FayeFactory,VehicleService,$interval){
+    $scope.trips= [];
+    $scope.vehicles= [];
+    $scope.vehicles= VehicleService.vehicles;
+    $scope.isEditing= false; 
 
-.controller("UserController",function($scope,FayeFactory){
-    $scope.addingNewUser=false;
-    $scope.watingForId= false;
-    $scope.users= [];
+    $scope.edit= function(o) {
+        $scope.toEdit= o;
+        $scope.isEditing= true;
+    }
 
-    FayeFactory.subscribe('/CardSwiped', function (card) {
-        if(card.card_id){
-            $scope.watingForId= false;
-            $scope.addingNewUser=true;
-    
-            $scope.card_id= card.card_id;
-        }
+    $scope.dialogOptions= {
+        scope: $scope
+    }
+
+    $scope.create= function(o) {
+        FayeFactory.publish('/create/Trip', o); 
+        $scope.isEditing= false; 
+        console.log(o);   
+    }
+
+    $scope.update= function(o) {
+        FayeFactory.publish('/update/Trip', o);   
+        $scope.isEditing= false;        
+    }
+
+    $scope.delete= function(o) {
+        FayeFactory.publish('/delete/Trip', o);        
+    }
+
+    FayeFactory.subscribe('/list/Trip', function(objs) {
+        $scope.trips= objs;
+        console.log(objs);
     });
 
-    FayeFactory.subscribe('/ListAcc', function (data) {
-        $scope.users= data;    
-    });
-    FayeFactory.publish('/ListAccReq',{});
-    
 
-    $scope.newUser= function() { 
-        $scope.watingForId=true;
-        FayeFactory.publish('/CardIdReq',{});
-    }
-    $scope.save= function() {
-        var obj= {
-            name: $scope.name,
-            phone: $scope.phone,
-            email: $scope.email,
-            card_id: $scope.card_id
-        };
-        $scope.users.push(obj);
-        FayeFactory.publish('/NewAccReq',obj);
-        
-        $scope.firstname="";
-        $scope.lastname="";
-        $scope.phone="";
-        $scope.email="";
-        $scope.card_id="";
-        $scope.addingNewUser=false;
-    }
+    FayeFactory.publish('/list-req/Trip', {});
     
-    $scope.clearAll= function() {
-        $scope.users= [];
+    $scope.printVehicle= function(id) {
+        var v= VehicleService.getVehicle(id);
+        console.log(v);
+        return v.brand+'['+v.numberplate+']';
     }
-    
-    $scope.show= function() {
-        alert($scope.username+" "+ $scope.age+" "+$scope.email);
+    $scope.getSelectedDays= function(days) {
+        var selectedDays= Object.keys(days);      
+        return selectedDays;
     }
 
-    $scope.deleteUser= function(user) {
-        FayeFactory.publish('/DelAccReq',user);        
-    }
+    console.warn("TripController");
 })
 
+.controller("SettingsController",function($scope, $rootScope){
+
+})
 
 ;
 

@@ -1,0 +1,69 @@
+<style>
+    .placepicker-map {
+        min-height: 350px;
+    }
+    
+    .address-indicator {
+        color: gray;
+        font-size: 12px;
+        font-style: italic;
+        margin-left: 10px;
+        margin-top: -5px;
+    }
+</style>
+            
+<div  ng-init="o= isEditing? toEdit: null" >
+    <form>
+        <input hidden ng-model="o._id" />
+        <div class="form-group">
+            <input class="form-control" placeholder="De" ng-model="o.from" />
+        </div>
+        <div class="form-group">
+            <input class="form-control" placeholder="A" ng-model="o.to" />
+        </div>
+        <div class="form-group">
+            <input class="form-control" placeholder="Heure" type="time" ng-model="o.time" />
+        </div>
+    
+        <div class="form-group">
+            <select class="form-control" placeholder="Vehicule" ng-options="vehicle as vehicle.brand for vehicle in vehicles track by vehicle._id" ng-model="o.vehicle"></select>
+        </div>
+        
+        <div class="form-group">
+            <input class="form-control" placeholder="Jours" ng-model="o.dssays" />
+        </div>
+            <toggle class="filterSwitch" ng-model="o.days.monday" ng-change="changed()" on="Lundi" off="Lundi" onstyle="btn-success" offstyle="btn-default" size="btn-sm"></toggle>
+            <toggle class="filterSwitch" ng-model="o.days.tuesday" ng-change="changed()" on="Mardi" off="Mardi" onstyle="btn-success" offstyle="btn-default" size="btn-sm"></toggle>
+            <toggle class="filterSwitch" ng-model="o.days.wednesday" ng-change="changed()" on="Mercredi" off="Mercredi" onstyle="btn-success" offstyle="btn-default" size="btn-sm"></toggle>
+            <toggle class="filterSwitch" ng-model="o.days.thursday" ng-change="changed()" on="Jeudi" off="Jeudi" onstyle="btn-success" offstyle="btn-default" size="btn-sm"></toggle>
+            <toggle class="filterSwitch" ng-model="o.days.friday" ng-change="changed()" on="Vendredi" off="Vendredi" onstyle="btn-success" offstyle="btn-default" size="btn-sm"></toggle>
+            <toggle class="filterSwitch" ng-model="o.days.saturday" ng-change="changed()" on="Samedi" off="Samedi" onstyle="btn-success" offstyle="btn-default" size="btn-sm"></toggle>
+            <toggle class="filterSwitch" ng-model="o.days.sunday" ng-change="changed()" on="Dimanche" off="Dimanche" onstyle="btn-success" offstyle="btn-default" size="btn-sm"></toggle>
+        <br>
+        <br>
+    
+        <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+            <a class="btn btn-danger"  data-dismiss="modal">Annuler</a>
+            <a ng-show="!isEditing" class="btn btn-default"  data-dismiss="modal" ng-click="create(o)">Enregistrer</a>
+            <a ng-show="isEditing" class="btn btn-default"  data-dismiss="modal" ng-click="update(o)">Enregistrer</a>
+       </div>
+    </form>
+</div>
+
+
+<script>
+    // setInterval(function(){
+    //     $("#lat").change();
+    //     $("#long").change();
+    //     $("#addr").val( $("#placepicker").val() );
+    //     $("#addr").change();
+
+    // },10);
+    // setTimeout(function(){
+    //     $("#placepicker").placepicker({
+    //         placeChanged: function(place) {
+    //             $("#map-address").html(place.formatted_address);
+    //         }
+    //     })        
+    // },100);
+</script>

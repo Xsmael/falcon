@@ -1,0 +1,58 @@
+<style>
+    .placepicker-map {
+        min-height: 350px;
+    }
+
+
+    .address-indicator {
+        color: gray;
+        font-size: 12px;
+        font-style: italic;
+        margin-left: 10px;
+        margin-top: -5px;
+    }
+</style>
+<div>
+    <form>
+        <input hidden ng-model="station._id" />
+        <div class="form-group">
+            <input class="form-control" placeholder="Gare" ng-model="station.name" />
+        </div>
+        <div class="form-group">
+            <input class="form-control" placeholder="Addresse" ng-model="station.address" />
+        </div>
+        <div class="form-group">
+            <input class="form-control" placeholder="Telephone" ng-model="station.phone" />
+        </div>
+    
+        <div class="form-group">
+            <input class="form-control" placeholder="Destinations" ng-model="station.destinations" />
+        </div>
+    
+        <div class="form-group">
+            <ng-bs3-datepicker  ng-model="station.opening" placeholder="Date d'ouverture'" language="fr-ca" date-format="DD-MM-YYYY">
+        </div>
+        
+        <a data-bb-handler="confirm" class="btn btn-block btn-default"  data-dismiss="modal" ng-click="update(station)">Enregistrer</a>
+        <a data-bb-handler="cancel" class="btn btn-block btn-danger"  data-dismiss="modal">Annuler</a>
+
+    </form>
+</div>
+
+
+<script>
+    // setInterval(function(){
+    //     $("#lat").change();
+    //     $("#long").change();
+    //     $("#addr").val( $("#placepicker").val() );
+    //     $("#addr").change();
+
+    // },10);
+    // setTimeout(function(){
+    //     $("#placepicker").placepicker({
+    //         placeChanged: function(place) {
+    //             $("#map-address").html(place.formatted_address);
+    //         }
+    //     })        
+    // },100);
+</script>

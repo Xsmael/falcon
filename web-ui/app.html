@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Xsmael puissancisma@gmail.com">
+    <title>piTer</title>
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./node_modules/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.css">
+    <link rel="stylesheet" href="./app.css">
+
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./node_modules/bootbox/bootbox.js"></script>
+
+    <script src="./node_modules/angular/angular.js"></script>
+    <script src="./node_modules/ngbootbox/dist/ngBootbox.js"></script>
+    <script src="./node_modules/angular-bootstrap-toggle/dist/angular-bootstrap-toggle.js"></script>
+    
+    <script src="./node_modules/faye/client/faye-browser.js" ></script>
+    <script src="./node_modules/angular-faye/build/angular-faye.js" ></script>
+    <script src="./node_modules/angular-ui-router/release/angular-ui-router.js" ></script>
+    <script src="app.js" ></script>
+
+    <style>
+    .floating-logo {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+        
+    }
+    </style>
+
+</head>
+
+<body ng-app="transport">
+    <!-- <div ng-controller="HomeController" class="container">
+        <header id="header">
+            <div class="row">
+                <div class="col-md-2 col-xs-12  icon-container">
+                    <a ui-sref="home"><img class="app-icon"  id="home-logo" src="./img/app-icon-small.png" /></a>
+                </div>
+            </div>
+
+        </header>
+    </div> -->
+    <div class="container-fluid" style="margin: 100px 20px 100px 0px">
+        <div class="row">
+            <div class="col-md-2">
+                <ul class="options-large">
+                    <li ng-show="!logedIn">
+                        <a id="user-menu" ui-sref="home" ui-sref-active="active-option">
+                                <i class="fa fa-home fa-4x"></i><br />
+                            Acceuil
+                        </a>
+                    </li>
+
+                    <li ng-show="!logedIn">
+                        <a id="customer-menu" ui-sref="ticket" ui-sref-active="active-option">
+                                <i class="fa fa-tags fa-4x"></i><br />
+                            Tickets
+                        </a>
+                    </li>
+                    <li ng-show="!logedIn">
+                        <a id="user-menu" ui-sref="parcel" ui-sref-active="active-option">
+                                <i class="fa fa-suitcase fa-4x"></i><br />
+                            Colis
+                        </a>
+                    </li>
+
+                    <li ng-show="!logedIn">
+                        <a id="user-menu" ui-sref="trip" ui-sref-active="active-option">
+                                <i class="fa fa-exchange fa-4x"></i><br />
+                            Voyages
+                        </a>
+                    </li>
+                    <li ng-show="!logedIn">
+                        <a id="user-menu" ui-sref="vehicle" ui-sref-active="active-option">
+                                <i class="fa fa-bus fa-4x"></i><br />
+                            Vehicules
+                        </a>
+                    </li>
+
+                    <li ng-show="!logedIn">
+                        <a id="user-menu" ui-sref="settings" ui-sref-active="active-option">
+                                <i class="fa fa-sliders fa-4x"></i><br />
+                            Parametres
+                        </a>
+                    </li>
+
+
+                </ul>
+                <div id="loader-indicator" title="Loading..." style="display:none;"></div>
+            </div>
+
+            <div class="col-md-10">
+                <ui-view></ui-view>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="floating-logo">
+        <img style="height: 100px;" src="./img/logo-sd.png" alt="">
+    </div>
+
+    <div ng-hide="true" class="jumbotron" style="margin-top:300px;">
+        <div class="row">
+            <div class="col-md-2 cp1 "></div>
+            <div class="col-md-2 cp2"></div>
+            <div class="col-md-2 cp3"></div>
+            <div class="col-md-2 cp4"></div>
+            <div class="col-md-2 cp5"></div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+
